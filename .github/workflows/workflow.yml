@@ -19,8 +19,8 @@ jobs:
 
       - name: npm test:ci
         run: npm run test:ci
-          env:
-            CI: ""
+        env:
+          CI: false
 
       - name: Install and build
         run: npm install && npm run build
