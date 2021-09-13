@@ -1,0 +1,36 @@
+.searchInput, .searchBtn {
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.title {
+    text-align: center;
+}
+
+.table {
+    border: 1px solid #626263;
+    border-collapse: collapse;
+    empty-cells: hide;
+}
+
+.table tbody, tr, td, th {
+    border: 1px solid #626263;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+.selected {
+    background-color: rgba(87, 177, 76, 0.73) !important;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #e3e3e3;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f3f4f5;
+}
+
+.userDetails img {
+    width: 20rem;
+}
