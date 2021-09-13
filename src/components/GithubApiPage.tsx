@@ -11,13 +11,13 @@ const GithubApiPage = () => {
 
     return (
         <Container fixed={true}>
-            <h1>Github API</h1>
+            <h1>Find GitHub Users</h1>
             <Search onSubmit={setUsers}/>
-            <Grid container spacing={1}>
-                <Grid item xs={6}>
+            <Grid container spacing={10} direction="row">
+                <Grid item xs>
                     <UsersList users={users} setUserDetails={setUserDetails}/>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs>
                     <UsersDetails userDetails={userDetails}/>
                 </Grid>
             </Grid>

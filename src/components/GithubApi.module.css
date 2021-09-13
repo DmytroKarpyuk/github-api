@@ -1,36 +1,25 @@
 .searchInput, .searchBtn {
-    padding: 10px;
+    padding: 10px !important;
     margin-bottom: 15px;
 }
 
-.title {
-    text-align: center;
+.usersList {
+    background-color: #f6f6f6;
 }
 
-.table {
-    border: 1px solid #626263;
-    border-collapse: collapse;
-    empty-cells: hide;
-}
-
-.table tbody, tr, td, th {
-    border: 1px solid #626263;
-    padding: 10px;
-    letter-spacing: 1px;
+.user:hover {
+    background-color: #dedede;
+    cursor: pointer;
 }
 
 .selected {
-    background-color: rgba(87, 177, 76, 0.73) !important;
+    background-color: rgba(163, 212, 158, 0.73) !important;
 }
 
-tbody tr:nth-child(odd) {
-    background-color: #e3e3e3;
+.userDetailsCard {
+    padding: 30px;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f3f4f5;
-}
-
-.userDetails img {
+.userDetailsWrp img {
     width: 20rem;
 }

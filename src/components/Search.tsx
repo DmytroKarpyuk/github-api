@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import styles from './GithubApi.module.css';
 import axios from "axios";
 import {UserType} from "./UsersList";
+import {Button, Grid, TextField} from "@material-ui/core";
 
 const Search = ({onSubmit}: PropsType) => {
 
@@ -17,12 +17,14 @@ const Search = ({onSubmit}: PropsType) => {
 
 
     return (
-        <div>
-            <input className={styles.searchInput} value={tempSearchValue} onChange={(e) => {
+        <Grid container direction="row" justifyContent="center">
+            <TextField label="User name or login" variant="filled" value={tempSearchValue} onChange={(e) => {
                 setTempSearchValue(e.currentTarget.value)
             }}/>
-            <button className={styles.searchBtn} onClick={() => setSearchValue(tempSearchValue)}>Search</button>
-        </div>
+            <Button variant="contained" color="primary" onClick={() => setSearchValue(tempSearchValue)}>
+                Search
+            </Button>
+        </Grid>
     )
 }
 
