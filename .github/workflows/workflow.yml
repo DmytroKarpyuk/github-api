@@ -17,11 +17,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: npm test:ci
-        run: npm run test:ci
-        env:
-          CI: false
-
       - name: Install and build
         run: npm install && npm run build
 
