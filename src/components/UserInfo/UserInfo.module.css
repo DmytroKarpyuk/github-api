@@ -1,0 +1,23 @@
+.wrp {
+    margin-top: 24px;
+    padding: 66px;
+    width: 1000px;
+    border: 1px solid rgba(40, 44, 52, 0.4);
+    border-radius: 49px;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 24px;
+}
+
+.img {
+    width: 262px;
+    border-radius: 22px;
+}
+
+.user_name {
+    margin-top: 18px;
+    font-size: 25px;
+}

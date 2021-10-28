@@ -1,11 +1,16 @@
 import React from 'react';
-import './App.css';
-import GithubApiPage from "./components/GithubApiPage";
+import MainPage from './pages/MainPage/MainPage';
+import {Route, Switch} from 'react-router-dom';
+import './global.css';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
     return (
         <div className="App">
-            <GithubApiPage/>
+            <Switch>
+                <Route exact path='/github-api' render={() => <MainPage/>}/>
+                <Route path='*' render={() => <ErrorPage/>}/>
+            </Switch>
         </div>
     );
 }

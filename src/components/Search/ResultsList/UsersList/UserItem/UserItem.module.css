@@ -1,0 +1,24 @@
+.wrp {
+    padding: 15px 30px 15px 30px;
+}
+
+.wrp:hover {
+    background: #edebd0;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 65px;
+    border-radius: 50px;
+    margin-right: 19px;
+}
+
+.user_id {
+    font-size: 14px;
+    margin-top: 5px;
+}
