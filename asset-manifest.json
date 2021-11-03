@@ -1,22 +1,29 @@
 {
   "files": {
-    "main.css": "/github-api/static/css/main.6ac2172b.chunk.css",
-    "main.js": "/github-api/static/js/main.70bb21ce.chunk.js",
-    "main.js.map": "/github-api/static/js/main.70bb21ce.chunk.js.map",
+    "main.css": "/github-api/static/css/main.5e0bbbea.chunk.css",
+    "main.js": "/github-api/static/js/main.3679a4cd.chunk.js",
+    "main.js.map": "/github-api/static/js/main.3679a4cd.chunk.js.map",
     "runtime-main.js": "/github-api/static/js/runtime-main.a2a11b4c.js",
     "runtime-main.js.map": "/github-api/static/js/runtime-main.a2a11b4c.js.map",
-    "static/js/2.50db4f43.chunk.js": "/github-api/static/js/2.50db4f43.chunk.js",
-    "static/js/2.50db4f43.chunk.js.map": "/github-api/static/js/2.50db4f43.chunk.js.map",
+    "static/js/2.9cf96392.chunk.js": "/github-api/static/js/2.9cf96392.chunk.js",
+    "static/js/2.9cf96392.chunk.js.map": "/github-api/static/js/2.9cf96392.chunk.js.map",
     "index.html": "/github-api/index.html",
-    "static/css/main.6ac2172b.chunk.css.map": "/github-api/static/css/main.6ac2172b.chunk.css.map",
-    "static/js/2.50db4f43.chunk.js.LICENSE.txt": "/github-api/static/js/2.50db4f43.chunk.js.LICENSE.txt",
+    "static/css/main.5e0bbbea.chunk.css.map": "/github-api/static/css/main.5e0bbbea.chunk.css.map",
+    "static/js/2.9cf96392.chunk.js.LICENSE.txt": "/github-api/static/js/2.9cf96392.chunk.js.LICENSE.txt",
     "static/media/Search.module.css": "/github-api/static/media/Loupe.32ac95cd.svg",
-    "static/media/Vector.da314b33.svg": "/github-api/static/media/Vector.da314b33.svg"
+    "static/media/Vector_white.1435d4ab.svg": "/github-api/static/media/Vector_white.1435d4ab.svg",
+    "static/media/background_avatar.54c1a830.svg": "/github-api/static/media/background_avatar.54c1a830.svg",
+    "static/media/background_cat.de9f9d3d.svg": "/github-api/static/media/background_cat.de9f9d3d.svg",
+    "static/media/background_cat2.d9312d85.svg": "/github-api/static/media/background_cat2.d9312d85.svg",
+    "static/media/background_eye.3cc290b1.svg": "/github-api/static/media/background_eye.3cc290b1.svg",
+    "static/media/background_loupe.6afb89e0.svg": "/github-api/static/media/background_loupe.6afb89e0.svg",
+    "static/media/background_loupe2.38392744.svg": "/github-api/static/media/background_loupe2.38392744.svg",
+    "static/media/folder.cc4fde0f.svg": "/github-api/static/media/folder.cc4fde0f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a2a11b4c.js",
-    "static/js/2.50db4f43.chunk.js",
-    "static/css/main.6ac2172b.chunk.css",
-    "static/js/main.70bb21ce.chunk.js"
+    "static/js/2.9cf96392.chunk.js",
+    "static/css/main.5e0bbbea.chunk.css",
+    "static/js/main.3679a4cd.chunk.js"
   ]
 }
