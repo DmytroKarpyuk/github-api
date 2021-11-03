@@ -1,0 +1,23 @@
+.wrp {
+    padding: 15px 30px 15px 30px;
+}
+
+.wrp:hover {
+    background: #edebd0;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.folder_icon {
+    margin-right: 19px;
+    margin-top: -24px;
+}
+
+.repo_id {
+    font-size: 14px;
+    margin-top: 5px;
+}

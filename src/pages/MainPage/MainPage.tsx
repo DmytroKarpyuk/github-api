@@ -3,22 +3,26 @@ import Logo from '../../components/Logo/Logo';
 import Search from '../../components/Search/Search';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import Footer from '../../components/Footer/Footer';
+import Vectors from '../../components/Vectors/Vectors';
 import styles from './MainPage.module.css';
 import {useSelector} from 'react-redux';
 import {AppStateType} from '../../store/store';
+import RepoInfo from '../../components/RepoInfo/RepoInfo';
 
 const MainPage = () => {
 
-    const isInfoMode = useSelector((state: AppStateType) => state.users.isInfoMode);
+    const appState = useSelector((state: AppStateType) => state.app);
 
     return (
-        <div className={isInfoMode ? styles.main_mode : styles.main}>
-            <div className={isInfoMode ? styles.logo_search_wrp_mode : styles.logo_search_wrp}>
+        <div className={styles.wrp}>
+            <div className={appState.isInfoMode ? styles.logo_search_wrp_mode : styles.logo_search_wrp}>
                 <Logo/>
                 <Search/>
             </div>
-            <UserInfo/>
-            {!isInfoMode && <Footer/>}
+            {appState.selectedUserItem && <UserInfo/>}
+            {appState.selectedRepoItem && <RepoInfo/>}
+            <Footer/>
+            <Vectors/>
         </div>
     )
 }

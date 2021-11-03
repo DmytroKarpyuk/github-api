@@ -13,12 +13,7 @@
     color: #FFFFFF;
 }
 
-.img {
-    width: 262px;
-    border-radius: 22px;
-}
-
-.user_name {
+.repo_name {
     margin-top: 18px;
     font-size: 25px;
 }

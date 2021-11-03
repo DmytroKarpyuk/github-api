@@ -1,0 +1,19 @@
+.wrp {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.repos_result_title,
+.repos_show_more {
+    padding: 30px 0 15px 30px;
+}
+
+.repos_show_more {
+    cursor: pointer;
+}
+
+.repos_show_more:hover {
+    color: #2ABAEA;
+    text-decoration-line: underline;
+}

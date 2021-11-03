@@ -1,0 +1,40 @@
+.cat {
+    position: absolute;
+    left: 20vw;
+    z-index: -1;
+}
+
+.cat2 {
+    position: absolute;
+    left: 80vw;
+    top: 10vh;
+    z-index: -1;
+}
+
+.eye {
+    position: absolute;
+    left: 65vw;
+    top: 70vh;
+    z-index: -1;
+}
+
+.loupe {
+    position: absolute;
+    left: 4vw;
+    top: 80vh;
+    z-index: -1;
+}
+
+.loupe2 {
+    position: absolute;
+    left: 92vw;
+    top: 60vh;
+    z-index: -1;
+}
+
+.avatar {
+    position: absolute;
+    left: 1vw;
+    top: 15vh;
+    z-index: -1;
+}

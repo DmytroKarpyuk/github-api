@@ -1,35 +1,18 @@
-.main {
-    background: rgb(161, 208, 149);
-    background: linear-gradient(to right, rgba(161, 208, 149, 1) 0%, rgba(149, 208, 169, 1) 100%);
-    background-repeat: no-repeat;
-    min-height: 100vh;
+.wrp {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #202E31;
 }
 
 .logo_search_wrp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 /*********************** Info Mode ***********************/
 
-.main_mode {
-    background: rgb(161, 208, 149);
-    background: linear-gradient(to right, rgba(161, 208, 149, 1) 0%, rgba(149, 208, 169, 1) 100%);
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #202E31;
-}
-
 .logo_search_wrp_mode {
+    margin-top: 50px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }

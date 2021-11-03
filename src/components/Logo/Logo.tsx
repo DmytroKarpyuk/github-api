@@ -1,12 +1,12 @@
 import React from 'react';
-import logo from '../../assets/Vector.svg'
+import logo from '../../assets/Vector_white.svg'
 import styles from './Logo.module.css';
 import {useSelector} from 'react-redux';
 import {AppStateType} from '../../store/store';
 
 const Logo = () => {
 
-    const isInfoMode = useSelector((state: AppStateType) => state.users.isInfoMode);
+    const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
 
     return (
         <div className={isInfoMode ? styles.wrp_mode : styles.wrp}>

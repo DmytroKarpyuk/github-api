@@ -1,0 +1,9 @@
+.wrp {
+    /*position: absolute;*/
+    /*width: inherit;*/
+    margin-top: 5px;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(35, 35, 35, 0.3);
+}
