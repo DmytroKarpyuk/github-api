@@ -8,12 +8,12 @@ import styles from './ResultsList.module.css';
 const ResultsList = () => {
 
     const usersState = useSelector((state: AppStateType) => state.app);
-    // const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
+    const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
 
     return (
-        <div className={styles.wrp}>
-            {!!usersState.userItems?.length && <UserItemsList/>}
-            {!!usersState.repoItems?.length && <RepoItemsList/>}
+        <div className={isInfoMode ? styles.wrp_mode : styles.wrp}>
+            {!!usersState.userResultItems?.length && <UserItemsList/>}
+            {!!usersState.repoResultItems?.length && <RepoItemsList/>}
         </div>
     );
 };

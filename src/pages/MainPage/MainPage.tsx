@@ -12,18 +12,21 @@ import RepoInfo from '../../components/RepoInfo/RepoInfo';
 const MainPage = () => {
 
     const appState = useSelector((state: AppStateType) => state.app);
+    const screenHeight = window.innerHeight;
 
     return (
-        <div className={styles.wrp}>
-            <div className={appState.isInfoMode ? styles.logo_search_wrp_mode : styles.logo_search_wrp}>
-                <Logo/>
-                <Search/>
+        <>
+            <div className={styles.wrp} style={{minHeight: screenHeight + 'px'}}>
+                <div className={appState.isInfoMode ? styles.logo_search_wrp_mode : styles.logo_search_wrp}>
+                    <Logo/>
+                    <Search/>
+                </div>
+                {appState.selectedUserItem && <UserInfo/>}
+                {appState.selectedRepoItem && <RepoInfo/>}
+                <Vectors/>
             </div>
-            {appState.selectedUserItem && <UserInfo/>}
-            {appState.selectedRepoItem && <RepoInfo/>}
             <Footer/>
-            <Vectors/>
-        </div>
+        </>
     )
 }
 

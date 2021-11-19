@@ -1,14 +1,14 @@
 import React from 'react';
 import UserItem from './UserItem/UserItem';
 import styles from './UserItemsList.module.css';
-import {UserItemType} from '../../../../http/api';
+import {UserType} from '../../../../http/api';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppStateType} from '../../../../store/store';
 import {actions} from '../../../../store/reducers/app-reducer';
 
 const UserItemsList: React.FC = () => {
 
-    const userItems = useSelector((state: AppStateType) => state.app.userItems);
+    const userItems = useSelector((state: AppStateType) => state.app.userResultItems);
     const showUserItems = useSelector((state: AppStateType) => state.app.showUserItems);
     const userItemsTotalCount = useSelector((state: AppStateType) => state.app.userItemsTotalCount);
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const UserItemsList: React.FC = () => {
             <div className={styles.users_result_title}>
                 <b>List of GitHub users:</b>
             </div>
-            {userItems?.map((u: UserItemType, index) => index < showUserItems ?
+            {userItems?.map((u: UserType, index) => index < showUserItems ?
                 <div key={u.id}>
                     <UserItem userItem={u}/>
                 </div> : null

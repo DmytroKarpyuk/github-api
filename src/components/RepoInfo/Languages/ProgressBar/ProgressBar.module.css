@@ -1,0 +1,48 @@
+.circular {
+    height: 56px;
+    width: 56px;
+    position: relative;
+}
+
+.circular .inner {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    height: 52px;
+    width: 52px;
+    margin: -26px 0 0 -26px;
+    background: #ffffff;
+    border-radius: 100%;
+}
+
+.circular .number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: 12px;
+    font-weight: 500;
+    color: #20283A;
+    opacity: .8;
+}
+
+.circular .bar_left,
+.circular .bar_right {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #e5e5e5;
+    -webkit-border-radius: 100%;
+    clip: rect(0px, 56px, 56px, 28px);
+}
+
+.circle .bar_left .progress,
+.circle .bar_right .progress {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 100%;
+    clip: rect(0px, 56px, 56px, 0px);
+}

@@ -1,39 +1,40 @@
 .cat {
-    position: absolute;
+    position: fixed;
     left: 20vw;
+    top: 50vh;
     z-index: -1;
 }
 
 .cat2 {
-    position: absolute;
+    position: fixed;
     left: 80vw;
     top: 10vh;
     z-index: -1;
 }
 
 .eye {
-    position: absolute;
+    position: fixed;
     left: 65vw;
     top: 70vh;
     z-index: -1;
 }
 
 .loupe {
-    position: absolute;
+    position: fixed;
     left: 4vw;
     top: 80vh;
     z-index: -1;
 }
 
 .loupe2 {
-    position: absolute;
+    position: fixed;
     left: 92vw;
     top: 60vh;
     z-index: -1;
 }
 
 .avatar {
-    position: absolute;
+    position: fixed;
     left: 1vw;
     top: 15vh;
     z-index: -1;

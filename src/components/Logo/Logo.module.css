@@ -21,12 +21,17 @@
     margin-bottom: 5px;
 }
 
+.author_title,
+.author_title_mode{
+    opacity: .7;
+}
+
 /*********************** Info Mode ***********************/
 
 .wrp_mode {
     display: flex;
     align-items: center;
-    margin-right: 95px;
+    margin-right: 100px;
     color: #FFFFFF;
  }
 
@@ -40,6 +45,6 @@
     margin-bottom: 3px;
 }
 
-.author_title {
+.author_title_mode {
     font-size: 12px;
 }

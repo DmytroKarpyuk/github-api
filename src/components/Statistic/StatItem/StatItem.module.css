@@ -1,0 +1,33 @@
+.statistic_item {
+    width: 247px;
+    height: 71px;
+    display: flex;
+    padding: 18px 5px 0 26px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 18px rgba(36, 46, 34, 0.12);
+    border-radius: 17px;
+    font-family: Open Sans, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: rgba(32, 40, 58, 0.75)
+}
+
+.statistic_item .row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.statistic_item img {
+    margin-right: 13px;
+}
+
+.statistic_item .stat_title {
+    margin-bottom: 10px;
+}
+
+.statistic_item b {
+    font-size: 25px;
+    color: #20283A;
+}

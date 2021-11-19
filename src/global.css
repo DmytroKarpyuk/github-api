@@ -3,7 +3,6 @@ body {
     background: rgb(135, 209, 161);
     background: linear-gradient(145deg, rgba(135, 209, 161, 1) 0%, rgba(30, 160, 187, 1) 100%);
     background-repeat: no-repeat;
-    min-height: 100vh;
     font-family: 'Open Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

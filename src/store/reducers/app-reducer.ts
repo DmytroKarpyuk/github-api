@@ -1,4 +1,4 @@
-import {userAPI, UserInfoType, UserItemType, RepoItemType, RepoInfoType, repoAPI, LanguagesType} from '../../http/api';
+import {ContributorType, LanguagesType, repoAPI, RepoType, userAPI, UserType} from '../../http/api';
 
 const SET_USER_ITEMS = 'app-reducer/SET_USER_ITEMS';
 const SET_USER_ITEMS_TOTAL_COUNT = 'app-reducer/SET_USER_ITEMS_TOTAL_COUNT';
@@ -7,22 +7,27 @@ const SET_REPO_ITEMS_TOTAL_COUNT = 'app-reducer/SET_REPO_ITEMS_TOTAL_COUNT';
 const SET_SELECTED_USER = 'app-reducer/SET_SELECTED_USER';
 const SET_SELECTED_REPO = 'app-reducer/SET_SELECTED_REPO';
 const SET_USER_INFO = 'app-reducer/SET_USER_INFO';
+const SET_USER_REPOS = 'app-reducer/SET_USER_REPOS';
 const SET_REPO_INFO = 'app-reducer/SET_REPO_INFO';
 const SET_SHOW_USER_ITEMS = 'app-reducer/SET_SHOW_USER_ITEMS';
 const SET_SHOW_REPO_ITEMS = 'app-reducer/SET_SHOW_REPO_ITEMS';
 const SET_LANGUAGES_INFO = 'app-reducer/SET_LANGUAGES_INFO';
+const SET_CONTRIBUTORS = 'app-reducer/SET_CONTRIBUTORS';
 const SET_IS_INFO_MODE = 'app-reducer/SET_IS_INFO_MODE';
 
 const initialState = {
-    userItems: null as UserItemType[] | null,
+    userResultItems: null as UserType[] | null,
     userItemsTotalCount: 0 as number,
-    repoItems: null as RepoItemType[] | null,
+    repoResultItems: null as RepoType[] | null,
     repoItemsTotalCount: 0 as number,
-    selectedUserItem: null as UserItemType | null,
-    selectedRepoItem: null as RepoItemType | null,
-    userInfo: null as UserInfoType | null,
-    repoInfo: null as RepoInfoType | null,
+    selectedUserItem: null as UserType | null,
+    selectedRepoItem: null as RepoType | null,
+    userInfo: null as UserType | null,
+    userReposList: null as UserRepoInfoType[] | null,
+    // userReposList: null as RepoType[] | null,
+    repoInfo: null as RepoType | null,
     languagesInfo: {} as LanguagesType,
+    contributors: null as ContributorType[] | null,
     showUserItems: 3,
     showRepoItems: 3,
     isInfoMode: false
@@ -33,7 +38,7 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
         case SET_USER_ITEMS:
             return {
                 ...state,
-                userItems: action.payload
+                userResultItems: action.payload
             };
         case SET_USER_ITEMS_TOTAL_COUNT:
             return {
@@ -43,7 +48,7 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
         case SET_REPO_ITEMS:
             return {
                 ...state,
-                repoItems: action.payload
+                repoResultItems: action.payload
             };
         case SET_REPO_ITEMS_TOTAL_COUNT:
             return {
@@ -65,6 +70,11 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
                 ...state,
                 userInfo: action.payload
             };
+        case SET_USER_REPOS:
+            return {
+                ...state,
+                userReposList: action.payload
+            }
         case SET_REPO_INFO:
             return {
                 ...state,
@@ -85,6 +95,11 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
                 ...state,
                 languagesInfo: action.payload
             };
+        case SET_CONTRIBUTORS:
+            return {
+                ...state,
+                contributors: action.payload
+            };
         case SET_IS_INFO_MODE:
             return {
                 ...state,
@@ -96,28 +111,34 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
 };
 
 export const actions = {
-    setUserItems: (userItems: UserItemType[] | null) => ({
-        type: SET_USER_ITEMS, payload: userItems
+    setUserItems: (userResultItems: UserType[] | null) => ({
+        type: SET_USER_ITEMS, payload: userResultItems
     }),
     setUserItemsTotalCount: (count: number | null) => ({
         type: SET_USER_ITEMS_TOTAL_COUNT, payload: count
     }),
-    setRepoItems: (repoItems: RepoItemType[] | null) => ({
-        type: SET_REPO_ITEMS, payload: repoItems
+    setRepoItems: (repoResultItems: RepoType[] | null) => ({
+        type: SET_REPO_ITEMS, payload: repoResultItems
     }),
     setRepoItemsTotalCount: (count: number | null) => ({
         type: SET_REPO_ITEMS_TOTAL_COUNT, payload: count
     }),
-    setSelectedUser: (user: UserItemType | null) => ({
+    setSelectedUser: (user: UserType | null) => ({
         type: SET_SELECTED_USER, payload: user
     }),
-    setSelectedRepo: (repo: RepoItemType | null) => ({
+    setSelectedRepo: (repo: RepoType | null) => ({
         type: SET_SELECTED_REPO, payload: repo
     }),
-    setUserInfo: (userInfo: UserInfoType) => ({
+    setUserInfo: (userInfo: UserType) => ({
         type: SET_USER_INFO, payload: userInfo
     }),
-    setRepoInfo: (repoInfo: RepoInfoType) => ({
+    setUserRepos: (userRepos: UserRepoInfoType[]) => ({
+        type: SET_USER_REPOS, payload: userRepos
+    }),
+    // setUserRepos: (userRepos: RepoType[]) => ({
+    //     type: SET_USER_REPOS, payload: userRepos
+    // }),
+    setRepoInfo: (repoInfo: RepoType) => ({
         type: SET_REPO_INFO, payload: repoInfo
     }),
     setShowUserItems: (itemsCount: number) => ({
@@ -129,12 +150,15 @@ export const actions = {
     setLanguagesInfo: (languagesInfo: LanguagesType) => ({
         type: SET_LANGUAGES_INFO, payload: languagesInfo
     }),
+    setContributors: (contributors: ContributorType[]) => ({
+        type: SET_CONTRIBUTORS, payload: contributors
+    }),
     setIsInfoMode: (isInfoMode: boolean) => ({
         type: SET_IS_INFO_MODE, payload: isInfoMode
     })
 };
 
-export const getUserItems = (userName: string) => async (dispatch: any) => {
+export const getUserResultItems = (userName: string) => async (dispatch: any) => {
     const data = await userAPI.getUsers(userName);
     dispatch(actions.setUserItems(data.items));
     dispatch(actions.setUserItemsTotalCount(data.total_count));
@@ -146,10 +170,33 @@ export const getRepoItems = (repoName: string) => async (dispatch: any) => {
     dispatch(actions.setRepoItemsTotalCount(data.total_count));
 };
 
-export const getUserInfo = (value: string) => async (dispatch: any) => {
-    const data = await userAPI.getUserInfo(value);
+export const getUserInfo = (userLogin: string) => async (dispatch: any) => {
+    const data = await userAPI.getUserInfo(userLogin);
     dispatch(actions.setUserInfo(data));
 };
+
+export const getUserRepos = (userLogin: string) => async (dispatch: any) => {
+    const reposData = await userAPI.getUserRepos(userLogin)
+        .then(values => values.map(async (repository, i) => {
+            if (i < 3) {
+                const languagesInfo = await repoAPI.getLanguagesInfo(repository.owner.login, repository.name);
+                return {
+                    id: values[i].id,
+                    name: values[i].name,
+                    languagesInfo
+                }
+            }
+        }));
+    await Promise.all(reposData).then((values) => {
+        const reposInfoList = values.filter((r): r is UserRepoInfoType => r !== undefined);
+        dispatch(actions.setUserRepos(reposInfoList));
+    });
+};
+
+// export const getUserRepos = (userLogin: string) => async (dispatch: any) => {
+//     const userRepos = await userAPI.getUserRepos(userLogin)
+//     dispatch(actions.setUserRepos(userRepos));
+// };
 
 export const getRepoInfo = (login: string, repoName: string) => async (dispatch: any) => {
     const data = await repoAPI.getRepoInfo(login, repoName);
@@ -161,6 +208,12 @@ export const getLanguagesInfo = (login: string, repoName: string) => async (disp
     dispatch(actions.setLanguagesInfo(data));
 };
 
+export const getContributors = (login: string, repoName: string) => async (dispatch: any) => {
+    const data = await repoAPI.getContributors(login, repoName);
+    dispatch(actions.setContributors(data));
+};
+
 export default appReducer;
 
 type UsersReducerStateType = typeof initialState
+type UserRepoInfoType = { id: number, name: string, languagesInfo: LanguagesType }

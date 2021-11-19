@@ -7,7 +7,7 @@ import {actions} from '../../../../store/reducers/app-reducer';
 
 const RepoItemsList = () => {
 
-    const repoItems = useSelector((state: AppStateType) => state.app.repoItems);
+    const repoItems = useSelector((state: AppStateType) => state.app.repoResultItems);
     const showRepoItems = useSelector((state: AppStateType) => state.app.showRepoItems);
     const repoItemsTotalCount = useSelector((state: AppStateType) => state.app.repoItemsTotalCount);
     const dispatch = useDispatch();

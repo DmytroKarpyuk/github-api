@@ -1,5 +1,5 @@
 import React from 'react';
-import {RepoItemType} from '../../../../../http/api';
+import {RepoType} from '../../../../../http/api';
 import {useDispatch} from 'react-redux';
 import {actions} from '../../../../../store/reducers/app-reducer';
 import styles from './RepoItem.module.css';
@@ -33,5 +33,5 @@ const RepoItem: React.FC<PropsType> = ({repoItem}) => {
 export default RepoItem;
 
 type PropsType = {
-    repoItem: RepoItemType
+    repoItem: RepoType
 }

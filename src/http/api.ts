@@ -5,11 +5,14 @@ const instance = axios.create({
 });
 
 export const userAPI = {
-    getUsers(userName: string) {
-        return instance.get<UserItemsResultType>(`search/users?q=${userName}`).then(res => res.data);
+    getUsers(userLogin: string) {
+        return instance.get<UserItemsResultType>(`search/users?q=${userLogin}`).then(res => res.data);
     },
-    getUserInfo(userName: string) {
-        return instance.get<UserInfoType>(`users/${userName}`).then(res => res.data);
+    getUserInfo(userLogin: string) {
+        return instance.get<UserType>(`users/${userLogin}`).then(res => res.data);
+    },
+    getUserRepos(userLogin: string) {
+        return instance.get<RepoType[]>(`users/${userLogin}/repos`).then(res => res.data);
     }
 };
 
@@ -17,59 +20,64 @@ export const repoAPI = {
     getRepos(repoName: string) {
         return instance.get<RepoItemsResultType>(`search/repositories?q=${repoName}`).then(res => res.data);
     },
-    getRepoInfo(login: string, repoName: string) {
-        return instance.get<RepoInfoType>(`repos/${login}/${repoName}`).then(res => res.data);
+    getRepoInfo(userLogin: string, repoName: string) {
+        return instance.get<RepoType>(`repos/${userLogin}/${repoName}`).then(res => res.data);
     },
-    getLanguagesInfo(login: string, repoName: string) {
-        return instance.get<LanguagesType>(`repos/${login}/${repoName}/languages`).then(res => res.data);
+    getLanguagesInfo(userLogin: string, repoName: string) {
+        return instance.get<LanguagesType>(`repos/${userLogin}/${repoName}/languages`).then(res => res.data);
+    },
+    getContributors(userLogin: string, repoName: string) {
+        return instance.get<ContributorType[]>(`repos/${userLogin}/${repoName}/contributors`).then(res => res.data);
     }
 };
 
 /** Users types */
-export type UserItemType = {
-    id: number
-    login: string
-    avatar_url: string
-}
-export type UserInfoType = {
+export type UserType = {
     id: number
     login: string
     name: string | null
-    avatar_url: string | null
+    avatar_url: string
+    type: string
     location: string | null
+    email: string | null
+    html_url: string
     repos_url: string
+    public_repos: number
+    public_gists: number
     followers: number
     following: number
     created_at: string
+    bio: string | null
+    company: string | null
+    blog: string | null
 }
 type UserItemsResultType = {
     incomplete_results: boolean
-    items: UserItemType[]
+    items: UserType[]
     total_count: number
+}
+export type ContributorType = {
+    login: string,
+    id: number,
+    avatar_url: string,
+    html_url: string,
 }
 
 /** Repositories types */
-export type RepoItemType = {
+export type RepoType = {
     id: number
     name: string
     full_name: string
     private: boolean
-    description: string
-    url: string
-    owner: {
-        login: string
-    }
-}
-export type LanguagesType = {
-    [name: string]: number
-}
-export type RepoInfoType = {
-    id: number
-    name: string
-    description: string
-    full_name: string
+    description: string | null
     visibility: string
+    html_url: string
     url: string
+    created_at: string
+    homepage: string | null
+    clone_url: string | null
+    language: string | null
+    forks: number
     owner: {
         login: string
         id: number
@@ -78,8 +86,11 @@ export type RepoInfoType = {
     languages_url: string
     size: number
 }
+export type LanguagesType = {
+    [name: string]: number
+}
 type RepoItemsResultType = {
     incomplete_results: boolean
-    items: RepoItemType[]
+    items: RepoType[]
     total_count: number
 }

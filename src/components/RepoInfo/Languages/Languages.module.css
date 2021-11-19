@@ -1,0 +1,24 @@
+.wrp {
+    display: flex;
+}
+
+.language_wrp {
+    display: flex;
+    align-items: center;
+    margin-right: 33px;
+}
+
+.point {
+    width: 7px;
+    height: 7px;
+    margin-right: 14px;
+    border-radius: 100%;
+}
+
+.language_name {
+    margin-right: 17px;
+}
+
+.language progress {
+
+}

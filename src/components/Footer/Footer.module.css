@@ -1,8 +1,21 @@
 .wrp {
-    padding: 30px;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
+    color: #ffffff;
+}
+
+.link {
+    text-decoration: none;
     color: #FFFFFF;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #dddddd;
 }

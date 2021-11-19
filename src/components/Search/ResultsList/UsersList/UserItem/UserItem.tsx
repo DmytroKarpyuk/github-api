@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './UserItem.module.css';
-import {UserItemType} from '../../../../../http/api';
+import {UserType} from '../../../../../http/api';
 import {useDispatch} from 'react-redux';
 import {actions} from '../../../../../store/reducers/app-reducer';
 
@@ -32,6 +32,6 @@ const UserItem: React.FC<PropsType> = ({userItem}) => {
 export default UserItem;
 
 type PropsType = {
-    userItem: UserItemType
+    userItem: UserType
 }
 

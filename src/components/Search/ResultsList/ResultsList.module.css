@@ -1,9 +1,14 @@
-.wrp {
-    /*position: absolute;*/
-    /*width: inherit;*/
+.wrp, .wrp_mode {
+    width: inherit;
     margin-top: 5px;
     background: #ffffff;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(35, 35, 35, 0.3);
+    margin-bottom: 160px;
+    box-shadow: 0 6px 17px rgba(37, 42, 52, 0.17);
+}
+
+.wrp_mode {
+    position: absolute;
+    z-index: 100;
 }

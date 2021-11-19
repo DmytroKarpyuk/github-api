@@ -13,7 +13,9 @@ const Logo = () => {
             <img src={logo} alt='...' className={isInfoMode ? styles.logo_mode : styles.logo}/>
             <div className={styles.title_wrp}>
                 <span className={isInfoMode ? styles.title_mode : styles.title}><b>GitHub</b> Search</span>
-                <span className={isInfoMode ? styles.author_title : ''}>Implemented by <b>Dmytro Karpyuk</b></span>
+                <span className={isInfoMode ? styles.author_title_mode : styles.author_title}>
+                    Implemented by <b>Dmytro Karpyuk</b>
+                </span>
             </div>
         </div>
     );
