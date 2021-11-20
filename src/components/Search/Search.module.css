@@ -63,6 +63,13 @@ input[type="search"]::-webkit-search-cancel-button {
     background: #49b2db;
 }
 
+button:disabled,
+button[disabled] {
+    background: #b5b6b7 !important;
+    cursor: not-allowed;
+    opacity: .8;
+}
+
 @media all and (max-width: 780px) {
     input {
         width: 600px;

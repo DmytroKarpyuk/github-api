@@ -17,7 +17,7 @@ const UserDetails: React.FC<PropsType> = ({userInfo}) => {
             <div className={styles.user_name_wrp}>
                 <div className={styles.user_name}><b>{userInfo.name || userInfo.login}</b></div>
                 <div className={styles.user_login}>{userInfo.login}</div>
-                <a className={styles.profile_link} href={userInfo.html_url}>
+                <a className={styles.profile_link} href={userInfo.html_url} target='_blank' rel="noreferrer">
                     <button>View Profile</button>
                 </a>
             </div>

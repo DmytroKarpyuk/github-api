@@ -11,6 +11,13 @@
     border-radius: 49px;
 }
 
+.statistic_row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
 .repos_title {
     font-style: normal;
     font-weight: bold;
@@ -30,7 +37,7 @@
 .repo_wrp {
     display: flex;
     justify-content: space-between;
-    padding: 16px;
+    padding: 16px 30px;
     border-bottom: 1px solid #D9D9D9;
 }
 
@@ -50,6 +57,10 @@
 
 .view_all_repositories {
     text-decoration: none;
+}
+
+.view_all_repositories_wrp {
+    padding: 30px;
 }
 
 .view_all_repositories:hover {

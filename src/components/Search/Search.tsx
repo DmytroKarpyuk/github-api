@@ -9,6 +9,7 @@ const Search = () => {
 
     const [tempSearchValue, setTempSearchValue] = useState('');
     const [searchValue, setSearchValue] = useState<string | null>(null);
+    const isFetching = useSelector((state: AppStateType) => state.app.isFetching);
     const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
     const dispatch = useDispatch();
 
@@ -28,8 +29,17 @@ const Search = () => {
                    onChange={(e) => {
                        setTempSearchValue(e.currentTarget.value)
                    }}
+                   onKeyUp={(e) => {
+                       if (e.key === 'Enter') setSearchValue(tempSearchValue);
+                   }}
             />
-            <button className={styles.search_btn} onClick={() => setSearchValue(tempSearchValue)}>Search</button>
+            <button
+                className={styles.search_btn}
+                onClick={() => setSearchValue(tempSearchValue)}
+                disabled={isFetching || !tempSearchValue}
+            >
+                Search
+            </button>
             <ResultsList/>
         </div>
     )

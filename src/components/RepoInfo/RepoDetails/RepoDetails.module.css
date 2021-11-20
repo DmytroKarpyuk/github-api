@@ -34,7 +34,7 @@
 }
 
 .img_wrp {
-    width: 152px;
+    min-width: 152px;
     height: 152px;
     margin-right: 25px;
     display: flex;
@@ -119,4 +119,9 @@
 
 .details_col b {
     margin-left: 10px;
+}
+
+.details_col a {
+    text-decoration: none;
+    color: #31353f;
 }

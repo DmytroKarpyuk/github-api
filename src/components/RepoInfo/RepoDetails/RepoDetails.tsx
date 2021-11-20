@@ -22,7 +22,7 @@ const RepoDetails: React.FC<PropsType> = ({repoInfo}) => {
 
                 <div className={styles.repo_name_wrp}>
                     <div className={styles.repo_name}><b>{repoInfo.name}</b></div>
-                    <a className={styles.repo_link} href={repoInfo.html_url}>
+                    <a href={repoInfo.html_url} className={styles.repo_link} target='_blank' rel='noreferrer'>
                         <button>View Repository</button>
                     </a>
                 </div>
@@ -37,7 +37,11 @@ const RepoDetails: React.FC<PropsType> = ({repoInfo}) => {
                         </div>
                         <div className={styles.details_col}>
                             {repoInfo.clone_url && <div><img src={idImg} alt='clone url'/>Clone url: <b>{repoInfo.clone_url}</b></div>}
-                            {repoInfo.homepage && <div><img src={idImg} alt='homepage'/>Homepage: <b>{repoInfo.homepage}</b></div>}
+                            {repoInfo.homepage &&
+                            <div>
+                                <img src={idImg} alt='homepage'/>
+                                Homepage: <b><a href={repoInfo.homepage} target='_blank' rel='noreferrer'>{repoInfo.homepage}</a></b>
+                            </div>}
                         </div>
                     </div>
                 </div>

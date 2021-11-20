@@ -9,6 +9,10 @@
     padding: 30px 0 15px 30px;
 }
 
+.preloader {
+    padding: 15px;
+}
+
 .repos_show_more {
     cursor: pointer;
 }

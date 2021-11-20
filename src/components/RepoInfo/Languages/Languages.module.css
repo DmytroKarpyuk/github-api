@@ -5,7 +5,7 @@
 .language_wrp {
     display: flex;
     align-items: center;
-    margin-right: 33px;
+    margin-left: 33px;
 }
 
 .point {

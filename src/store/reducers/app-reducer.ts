@@ -13,6 +13,7 @@ const SET_SHOW_USER_ITEMS = 'app-reducer/SET_SHOW_USER_ITEMS';
 const SET_SHOW_REPO_ITEMS = 'app-reducer/SET_SHOW_REPO_ITEMS';
 const SET_LANGUAGES_INFO = 'app-reducer/SET_LANGUAGES_INFO';
 const SET_CONTRIBUTORS = 'app-reducer/SET_CONTRIBUTORS';
+const SET_IS_FETCHING = 'app-reducer/SET_IS_FETCHING';
 const SET_IS_INFO_MODE = 'app-reducer/SET_IS_INFO_MODE';
 
 const initialState = {
@@ -24,12 +25,12 @@ const initialState = {
     selectedRepoItem: null as RepoType | null,
     userInfo: null as UserType | null,
     userReposList: null as UserRepoInfoType[] | null,
-    // userReposList: null as RepoType[] | null,
     repoInfo: null as RepoType | null,
     languagesInfo: {} as LanguagesType,
     contributors: null as ContributorType[] | null,
     showUserItems: 3,
     showRepoItems: 3,
+    isFetching: false,
     isInfoMode: false
 };
 
@@ -100,6 +101,11 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
                 ...state,
                 contributors: action.payload
             };
+        case SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.payload
+            };
         case SET_IS_INFO_MODE:
             return {
                 ...state,
@@ -135,9 +141,6 @@ export const actions = {
     setUserRepos: (userRepos: UserRepoInfoType[]) => ({
         type: SET_USER_REPOS, payload: userRepos
     }),
-    // setUserRepos: (userRepos: RepoType[]) => ({
-    //     type: SET_USER_REPOS, payload: userRepos
-    // }),
     setRepoInfo: (repoInfo: RepoType) => ({
         type: SET_REPO_INFO, payload: repoInfo
     }),
@@ -153,21 +156,28 @@ export const actions = {
     setContributors: (contributors: ContributorType[]) => ({
         type: SET_CONTRIBUTORS, payload: contributors
     }),
+    setIsFetching: (isFetching: boolean) => ({
+        type: SET_IS_FETCHING, payload: isFetching
+    }),
     setIsInfoMode: (isInfoMode: boolean) => ({
         type: SET_IS_INFO_MODE, payload: isInfoMode
     })
 };
 
 export const getUserResultItems = (userName: string) => async (dispatch: any) => {
+    dispatch(actions.setIsFetching(true));
     const data = await userAPI.getUsers(userName);
     dispatch(actions.setUserItems(data.items));
     dispatch(actions.setUserItemsTotalCount(data.total_count));
+    dispatch(actions.setIsFetching(false));
 };
 
 export const getRepoItems = (repoName: string) => async (dispatch: any) => {
+    dispatch(actions.setIsFetching(true));
     const data = await repoAPI.getRepos(repoName);
     dispatch(actions.setRepoItems(data.items));
     dispatch(actions.setRepoItemsTotalCount(data.total_count));
+    dispatch(actions.setIsFetching(false));
 };
 
 export const getUserInfo = (userLogin: string) => async (dispatch: any) => {
@@ -192,11 +202,6 @@ export const getUserRepos = (userLogin: string) => async (dispatch: any) => {
         dispatch(actions.setUserRepos(reposInfoList));
     });
 };
-
-// export const getUserRepos = (userLogin: string) => async (dispatch: any) => {
-//     const userRepos = await userAPI.getUserRepos(userLogin)
-//     dispatch(actions.setUserRepos(userRepos));
-// };
 
 export const getRepoInfo = (login: string, repoName: string) => async (dispatch: any) => {
     const data = await repoAPI.getRepoInfo(login, repoName);

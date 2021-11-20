@@ -5,7 +5,7 @@ import {AppStateType} from '../../store/store';
 import styles from './RepoInfo.module.css';
 import Languages from './Languages/Languages';
 import RepoDetails from './RepoDetails/RepoDetails';
-import StatItem from '../Statistic/StatItem/StatItem';
+import StatItem from '../StatItem/StatItem';
 import storageImg from '../../assets/Storage_small.svg';
 import folderGreenImg from '../../assets/Folder_green_small.svg';
 import followersImg from '../../assets/Followers.svg';
@@ -36,7 +36,7 @@ const RepoInfo: React.FC = () => {
                         <StatItem statItemImg={storageImg} statItemName='SIZE' value={(appState.repoInfo.size / 1000).toFixed(2) + ' MB'}/>
                         <StatItem statItemImg={folderGreenImg} statItemName='VISIBILITY' value={appState.repoInfo.visibility.toUpperCase()}/>
                         <StatItem statItemImg={followersImg} statItemName='FORKS' value={appState.repoInfo.forks}/>
-                        <StatItem statItemImg={followingImg} statItemName='LANGUAGE' value={appState.repoInfo.language}/>
+                        <StatItem statItemImg={followingImg} statItemName='LANGUAGE' value={appState.repoInfo.language || 'Not specified'}/>
                     </div>
                     <h2 className={styles.title}>Languages:</h2>
                     <div className={styles.languages_wrp}>
@@ -49,25 +49,25 @@ const RepoInfo: React.FC = () => {
                             <div className={styles.about_contributors_block}>{appState.repoInfo.description}</div>
                         </div>
                         }
-                        {appState.contributors &&
+                        {!!appState.contributors?.length &&
                         <div className={styles.about_contributors_wrp}>
                             <h3 className={styles.title}>Contributors:</h3>
                             <div className={styles.about_contributors_block}>
                                 <div className={styles.inner_row}>
                                     {appState.contributors?.map((contributor, i) =>
                                         i < 3 &&
-                                        <div className={styles.contributor_item}>
+                                        <div key={contributor.id} className={styles.contributor_item}>
                                             <img src={contributor.avatar_url} alt='contributor'/>
                                             <div className={styles.contributor_info}>
                                                 <span><b>{contributor.login}</b></span>
-                                                <span style={{opacity: .5}}>{contributor.id}</span>
+                                                <span style={{opacity: .5}}>Id: {contributor.id}</span>
                                             </div>
                                         </div>
                                     )}
                                 </div>
                                 <div>
                                     <a href={`https://github.com/${appState.repoInfo.owner.login}/${appState.repoInfo.name}/graphs/contributors`}
-                                       className={styles.view_all_contributors}>
+                                       className={styles.view_all_contributors} target='_blank' rel='noreferrer'>
                                         View all
                                     </a>
                                 </div>

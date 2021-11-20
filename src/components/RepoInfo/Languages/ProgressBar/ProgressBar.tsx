@@ -1,11 +1,7 @@
 import React from 'react';
 import styles from './ProgressBar.module.css';
 
-//<progress max={100} value={value}/>
-
 const ProgressBar: React.FC<PropsType> = ({value, color}) => {
-
-    const classes = {};
 
     return (
         <div className={styles.circular}>
