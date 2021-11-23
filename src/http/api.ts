@@ -5,10 +5,10 @@ const instance = axios.create({
 });
 
 export const userAPI = {
-    getUsers(userLogin: string) {
-        return instance.get<UserItemsResultType>(`search/users?q=${userLogin}`).then(res => res.data);
+    getUserItems(userLogin: string) {
+        return instance.get<UserItemsType>(`search/users?q=${userLogin}`).then(res => res.data);
     },
-    getUserInfo(userLogin: string) {
+    getUser(userLogin: string) {
         return instance.get<UserType>(`users/${userLogin}`).then(res => res.data);
     },
     getUserRepos(userLogin: string) {
@@ -17,10 +17,10 @@ export const userAPI = {
 };
 
 export const repoAPI = {
-    getRepos(repoName: string) {
-        return instance.get<RepoItemsResultType>(`search/repositories?q=${repoName}`).then(res => res.data);
+    getRepoItems(repoName: string) {
+        return instance.get<RepoItemsType>(`search/repositories?q=${repoName}`).then(res => res.data);
     },
-    getRepoInfo(userLogin: string, repoName: string) {
+    getRepository(userLogin: string, repoName: string) {
         return instance.get<RepoType>(`repos/${userLogin}/${repoName}`).then(res => res.data);
     },
     getLanguagesInfo(userLogin: string, repoName: string) {
@@ -51,7 +51,7 @@ export type UserType = {
     company: string | null
     blog: string | null
 }
-type UserItemsResultType = {
+type UserItemsType = {
     incomplete_results: boolean
     items: UserType[]
     total_count: number
@@ -89,7 +89,7 @@ export type RepoType = {
 export type LanguagesType = {
     [name: string]: number
 }
-type RepoItemsResultType = {
+type RepoItemsType = {
     incomplete_results: boolean
     items: RepoType[]
     total_count: number

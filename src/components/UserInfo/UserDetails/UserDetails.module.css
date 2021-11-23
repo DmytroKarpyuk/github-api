@@ -8,6 +8,7 @@
 }
 
 .user_name_wrp {
+    height: 152px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -17,7 +18,8 @@
 }
 
 .img {
-    width: 152px;
+    max-width: 152px;
+    max-height: 152px;
     margin-right: 25px;
     border-radius: 14px;
 }

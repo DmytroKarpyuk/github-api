@@ -26,6 +26,15 @@
     opacity: .7;
 }
 
+.author_title a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.author_title a:hover {
+    color: #ececec;
+}
+
 /*********************** Info Mode ***********************/
 
 .wrp_mode {
@@ -47,4 +56,13 @@
 
 .author_title_mode {
     font-size: 12px;
+}
+
+.author_title_mode a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.author_title_mode a:hover {
+    color: #ececec;
 }

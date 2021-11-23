@@ -1,0 +1,11 @@
+.preloader_wrp {
+    display: flex;
+    width: 96%;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader {
+    width: 65px;
+}

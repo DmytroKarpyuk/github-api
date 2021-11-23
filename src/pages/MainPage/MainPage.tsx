@@ -21,8 +21,8 @@ const MainPage = () => {
                     <Logo/>
                     <Search/>
                 </div>
-                {appState.selectedUserItem && <UserInfo/>}
-                {appState.selectedRepoItem && <RepoInfo/>}
+                {appState.userInfo && <UserInfo/>}
+                {appState.repoInfo && <RepoInfo/>}
                 <Vectors/>
             </div>
             <Footer/>

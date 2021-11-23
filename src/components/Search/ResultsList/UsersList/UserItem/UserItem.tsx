@@ -2,15 +2,15 @@ import React from 'react';
 import styles from './UserItem.module.css';
 import {UserType} from '../../../../../http/api';
 import {useDispatch} from 'react-redux';
-import {actions} from '../../../../../store/reducers/app-reducer';
+import {actions, getUser} from '../../../../../store/reducers/app-reducer';
 
 const UserItem: React.FC<PropsType> = ({userItem}) => {
 
     const dispatch = useDispatch();
 
     const clickHandler = () => {
-        dispatch(actions.setSelectedUser(userItem));
-        dispatch(actions.setSelectedRepo(null));
+        dispatch(getUser(userItem.login));
+        dispatch(actions.setRepoInfo(null));
         dispatch(actions.setUserItems(null));
         dispatch(actions.setRepoItems(null));
         dispatch(actions.setIsInfoMode(true));

@@ -125,3 +125,7 @@
     text-decoration: none;
     color: #31353f;
 }
+
+.details_col a:hover {
+    color: #999999;
+}

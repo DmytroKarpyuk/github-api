@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './Search.module.css'
-import {getRepoItems, getUserResultItems} from '../../store/reducers/app-reducer';
+import {getRepoItems, getUserItems} from '../../store/reducers/app-reducer';
 import {useDispatch, useSelector} from 'react-redux';
 import ResultsList from './ResultsList/ResultsList';
 import {AppStateType} from '../../store/store';
@@ -9,13 +9,14 @@ const Search = () => {
 
     const [tempSearchValue, setTempSearchValue] = useState('');
     const [searchValue, setSearchValue] = useState<string | null>(null);
-    const isFetching = useSelector((state: AppStateType) => state.app.isFetching);
+    const [isShowResults, setIsShowResults] = useState(false);
+    const isResultsFetching = useSelector((state: AppStateType) => state.app.isResultsFetching);
     const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (searchValue) {
-            dispatch(getUserResultItems(searchValue));
+            dispatch(getUserItems(searchValue));
             dispatch(getRepoItems(searchValue));
             setTempSearchValue('');
             setSearchValue('');
@@ -30,17 +31,23 @@ const Search = () => {
                        setTempSearchValue(e.currentTarget.value)
                    }}
                    onKeyUp={(e) => {
-                       if (e.key === 'Enter') setSearchValue(tempSearchValue);
+                       if (e.key === 'Enter') {
+                           setSearchValue(tempSearchValue);
+                           setIsShowResults(true);
+                       }
                    }}
             />
             <button
                 className={styles.search_btn}
-                onClick={() => setSearchValue(tempSearchValue)}
-                disabled={isFetching || !tempSearchValue}
+                onClick={() => {
+                    setSearchValue(tempSearchValue);
+                    setIsShowResults(true);
+                }}
+                disabled={isResultsFetching || !tempSearchValue}
             >
                 Search
             </button>
-            <ResultsList/>
+            <ResultsList isShowResults={isShowResults} setIsShowResults={setIsShowResults}/>
         </div>
     )
 }

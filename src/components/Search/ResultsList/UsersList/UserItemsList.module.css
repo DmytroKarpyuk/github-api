@@ -1,13 +1,6 @@
 .wrp {
     width: 100%;
     max-height: 300px;
-    overflow-y: scroll;
-    /*background: white;*/
-    /*border-radius: 30px;*/
-    /*box-shadow: 0 1px 5px;*/
-    /*overflow: hidden;*/
-    /*position: absolute;*/
-    /*z-index: 2;*/
 }
 
 .users_result_title,
@@ -15,8 +8,9 @@
     padding: 30px 0 15px 30px;
 }
 
-.preloader {
-    padding: 15px;
+.user_items_list {
+    max-height: 230px;
+    overflow: auto;
 }
 
 .users_show_more {
@@ -26,4 +20,26 @@
 .users_show_more:hover {
     color: #2ABAEA;
     text-decoration-line: underline;
+}
+
+.user_items_list::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.user_items_list::-webkit-scrollbar-track {
+    box-shadow: none;
+    background: #E4E4E4;
+    border-radius: 3px;
+}
+
+/* Handle */
+.user_items_list::-webkit-scrollbar-thumb {
+    background: #4AD2FF;
+    border-radius: 3px;
+}
+
+/* Handle on hover */
+.user_items_list::-webkit-scrollbar-thumb:hover {
+    background: #4AD2FF;
 }

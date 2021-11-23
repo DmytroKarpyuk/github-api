@@ -1,7 +1,7 @@
 import React from 'react';
 import {RepoType} from '../../../../../http/api';
 import {useDispatch} from 'react-redux';
-import {actions} from '../../../../../store/reducers/app-reducer';
+import {actions, getRepository} from '../../../../../store/reducers/app-reducer';
 import styles from './RepoItem.module.css';
 import folder_icon from '../../../../../assets/folder.svg';
 
@@ -10,8 +10,8 @@ const RepoItem: React.FC<PropsType> = ({repoItem}) => {
     const dispatch = useDispatch();
 
     const clickHandler = () => {
-        dispatch(actions.setSelectedRepo(repoItem));
-        dispatch(actions.setSelectedUser(null));
+        dispatch(getRepository(repoItem.owner.login, repoItem.name));
+        dispatch(actions.setUserInfo(null));
         dispatch(actions.setRepoItems(null));
         dispatch(actions.setUserItems(null));
         dispatch(actions.setIsInfoMode(true));

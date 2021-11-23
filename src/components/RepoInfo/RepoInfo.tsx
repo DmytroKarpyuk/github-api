@@ -1,78 +1,62 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getContributors, getLanguagesInfo, getRepoInfo} from '../../store/reducers/app-reducer';
+import {getContributors, getLanguagesInfo} from '../../store/reducers/app-reducer';
 import {AppStateType} from '../../store/store';
 import styles from './RepoInfo.module.css';
-import Languages from './Languages/Languages';
+import Languages from '../Languages/Languages';
 import RepoDetails from './RepoDetails/RepoDetails';
 import StatItem from '../StatItem/StatItem';
 import storageImg from '../../assets/Storage_small.svg';
 import folderGreenImg from '../../assets/Folder_green_small.svg';
 import followersImg from '../../assets/Followers.svg';
 import followingImg from '../../assets/Following.svg';
+import Contributors from './Contributors/Contributors';
 
 const RepoInfo: React.FC = () => {
 
-    const appState = useSelector((state: AppStateType) => state.app);
+    const repoInfo = useSelector((state: AppStateType) => state.app.repoInfo);
+    const contributors = useSelector((state: AppStateType) => state.app.contributors);
+    const languagesInfo = useSelector((state: AppStateType) => state.app.languagesInfo);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (appState.selectedRepoItem) {
-            dispatch(getRepoInfo(appState.selectedRepoItem.owner.login, appState.selectedRepoItem.name));
-            dispatch(getLanguagesInfo(appState.selectedRepoItem.owner.login, appState.selectedRepoItem.name));
-            dispatch(getContributors(appState.selectedRepoItem.owner.login, appState.selectedRepoItem.name));
-            document.title = appState.selectedRepoItem.name;
+        if (repoInfo) {
+            dispatch(getLanguagesInfo(repoInfo.owner.login, repoInfo.name));
+            dispatch(getContributors(repoInfo.owner.login, repoInfo.name));
+            document.title = repoInfo.name;
         }
-    }, [appState.selectedRepoItem, dispatch]);
+    }, [repoInfo, dispatch]);
 
     return (
         <div>
-            {appState.repoInfo &&
+            {repoInfo &&
             <>
                 <h1 className={styles.title}>Repository Information</h1>
                 <div className={styles.wrp}>
-                    <RepoDetails repoInfo={appState.repoInfo}/>
+                    <RepoDetails repoInfo={repoInfo}/>
                     <div className={styles.statistic_row}>
-                        <StatItem statItemImg={storageImg} statItemName='SIZE' value={(appState.repoInfo.size / 1000).toFixed(2) + ' MB'}/>
-                        <StatItem statItemImg={folderGreenImg} statItemName='VISIBILITY' value={appState.repoInfo.visibility.toUpperCase()}/>
-                        <StatItem statItemImg={followersImg} statItemName='FORKS' value={appState.repoInfo.forks}/>
-                        <StatItem statItemImg={followingImg} statItemName='LANGUAGE' value={appState.repoInfo.language || 'Not specified'}/>
+                        <StatItem statItemImg={storageImg} statItemName='SIZE' value={(repoInfo.size / 1000).toFixed(2) + ' MB'}/>
+                        <StatItem statItemImg={folderGreenImg} statItemName='VISIBILITY' value={repoInfo.visibility.toUpperCase()}/>
+                        <StatItem statItemImg={followersImg} statItemName='FORKS' value={repoInfo.forks}/>
+                        <StatItem statItemImg={followingImg} statItemName='LANGUAGE' value={repoInfo.language || 'Not specified'}/>
                     </div>
-                    <h2 className={styles.title}>Languages:</h2>
-                    <div className={styles.languages_wrp}>
-                        <Languages languagesInfo={appState.languagesInfo}/>
-                    </div>
+                    {!!Object.keys(languagesInfo).length &&
+                    <>
+                        <h2 className={styles.title}>Languages:</h2>
+                        <div className={styles.languages_wrp}>
+                            <Languages languagesInfo={languagesInfo}/>
+                        </div>
+                    </>
+                    }
                     <div className={styles.about_contributors_row}>
-                        {appState.repoInfo.description &&
+                        {repoInfo.description &&
                         <div className={styles.about_contributors_wrp}>
                             <h3 className={styles.title}>About:</h3>
-                            <div className={styles.about_contributors_block}>{appState.repoInfo.description}</div>
+                            <div className={styles.about_contributors_block}>{repoInfo.description}</div>
                         </div>
                         }
-                        {!!appState.contributors?.length &&
-                        <div className={styles.about_contributors_wrp}>
-                            <h3 className={styles.title}>Contributors:</h3>
-                            <div className={styles.about_contributors_block}>
-                                <div className={styles.inner_row}>
-                                    {appState.contributors?.map((contributor, i) =>
-                                        i < 3 &&
-                                        <div key={contributor.id} className={styles.contributor_item}>
-                                            <img src={contributor.avatar_url} alt='contributor'/>
-                                            <div className={styles.contributor_info}>
-                                                <span><b>{contributor.login}</b></span>
-                                                <span style={{opacity: .5}}>Id: {contributor.id}</span>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                                <div>
-                                    <a href={`https://github.com/${appState.repoInfo.owner.login}/${appState.repoInfo.name}/graphs/contributors`}
-                                       className={styles.view_all_contributors} target='_blank' rel='noreferrer'>
-                                        View all
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        {!!contributors?.length &&
+                        <Contributors/>
                         }
                     </div>
                 </div>
