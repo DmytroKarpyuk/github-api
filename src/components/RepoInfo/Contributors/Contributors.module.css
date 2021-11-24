@@ -1,0 +1,55 @@
+.about_contributors_row {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.about_contributors_wrp {
+    width: 49%;
+}
+
+.about_contributors_block {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 22px;
+    font-size: 16px;
+}
+
+.inner_row {
+    display: flex;
+}
+
+.contributor_item {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.contributor_item img {
+    width: 52px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.contributor_info {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.view_all_contributors {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #202E31;
+    opacity: .8;
+}
+
+.view_all_contributors:hover {
+    color: #2ABAEA;
+    text-decoration-line: underline;
+}

@@ -55,12 +55,17 @@
     margin-right: 16px;
 }
 
-.view_all_repositories {
-    text-decoration: none;
-}
-
 .view_all_repositories_wrp {
     padding: 30px;
+}
+
+
+.view_all_repositories {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #202E31;
+    opacity: .8;
 }
 
 .view_all_repositories:hover {

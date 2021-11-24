@@ -52,14 +52,13 @@
 
 .inner_row {
     display: flex;
-    margin-bottom: 30px;
 }
 
 .contributor_item {
     display: flex;
     align-items: center;
     margin-right: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .contributor_item img {
@@ -76,6 +75,10 @@
 
 .view_all_contributors {
     text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #202E31;
+    opacity: .8;
 }
 
 .view_all_contributors:hover {

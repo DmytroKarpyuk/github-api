@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUserRepos} from '../../store/reducers/app-reducer';
+import {actions, getRepository, getUserRepos} from '../../store/reducers/app-reducer';
 import {AppStateType} from '../../store/store';
 import styles from './UserInfo.module.css';
 import folderRepoImg from '../../assets/folder.svg';
@@ -19,6 +19,14 @@ const UserInfo: React.FC = () => {
     const userInfo = useSelector((state: AppStateType) => state.app.userInfo);
     const userReposList = useSelector((state: AppStateType) => state.app.userReposList);
     const dispatch = useDispatch();
+
+    const clickHandler = (login: string, repoName: string) => {
+        dispatch(getRepository(login, repoName));
+        dispatch(actions.setUserInfo(null));
+        dispatch(actions.setRepoItems(null));
+        dispatch(actions.setUserItems(null));
+        dispatch(actions.setIsInfoMode(true));
+    };
 
     useEffect(() => {
         if (userInfo) {
@@ -50,7 +58,7 @@ const UserInfo: React.FC = () => {
                                 :
                                 <>
                                     {userReposList?.map((r) =>
-                                        <div key={r.id} className={styles.repo_wrp}>
+                                        <div key={r.id} className={styles.repo_wrp} onClick={() => clickHandler(userInfo?.login, r.name)}>
                                             <div className={styles.repo_inner_wrp}>
                                                 <img src={folderRepoImg} alt='repo img'/>
                                                 <b>{r.name}</b>

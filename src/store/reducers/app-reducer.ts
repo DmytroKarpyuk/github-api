@@ -18,6 +18,7 @@ const SET_IS_USER_REPOS_FETCHING = 'app-reducer/SET_IS_USER_REPOS_FETCHING';
 const SET_IS_LANGUAGES_FETCHING = 'app-reducer/SET_IS_LANGUAGES_FETCHING';
 const SET_IS_CONTRIBUTORS_FETCHING = 'app-reducer/SET_IS_CONTRIBUTORS_FETCHING';
 const SET_IS_INFO_MODE = 'app-reducer/SET_IS_INFO_MODE';
+const SET_ERROR = 'app-reducer/SET_ERROR';
 
 const initialState = {
     userResultItems: null as UserType[] | null,
@@ -37,7 +38,8 @@ const initialState = {
     isUserReposFetching: false,
     isLanguagesFetching: false,
     isContributorsFetching: false,
-    isInfoMode: false
+    isInfoMode: false,
+    error: null as string | null
 };
 
 const appReducer = (state = initialState, action: any): UsersReducerStateType => {
@@ -132,6 +134,11 @@ const appReducer = (state = initialState, action: any): UsersReducerStateType =>
                 ...state,
                 isInfoMode: action.payload
             };
+        case SET_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
         default:
             return state;
     }
@@ -191,71 +198,151 @@ export const actions = {
     }),
     setIsInfoMode: (isInfoMode: boolean) => ({
         type: SET_IS_INFO_MODE, payload: isInfoMode
+    }),
+    setError: (error: string) => ({
+        type: SET_ERROR, payload: error
     })
 };
 
 export const getUserItems = (userName: string) => async (dispatch: any) => {
-    dispatch(actions.setIsResultsFetching(true));
-    const data = await userAPI.getUserItems(userName);
-    dispatch(actions.setUserItems(data.items));
-    dispatch(actions.setUserItemsTotalCount(data.total_count));
-    dispatch(actions.setIsResultsFetching(false));
+    try {
+        dispatch(actions.setIsResultsFetching(true));
+        const data = await userAPI.getUserItems(userName);
+        dispatch(actions.setUserItems(data.items));
+        dispatch(actions.setUserItemsTotalCount(data.total_count));
+        dispatch(actions.setIsResultsFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getRepoItems = (repoName: string) => async (dispatch: any) => {
-    dispatch(actions.setIsResultsFetching(true));
-    const data = await repoAPI.getRepoItems(repoName);
-    dispatch(actions.setRepoItems(data.items));
-    dispatch(actions.setRepoItemsTotalCount(data.total_count));
-    dispatch(actions.setIsResultsFetching(false));
+    try {
+        dispatch(actions.setIsResultsFetching(true));
+        const data = await repoAPI.getRepoItems(repoName);
+        dispatch(actions.setRepoItems(data.items));
+        dispatch(actions.setRepoItemsTotalCount(data.total_count));
+        dispatch(actions.setIsResultsFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getUser = (userLogin: string) => async (dispatch: any) => {
-    dispatch(actions.setIsUserFetching(true));
-    const data = await userAPI.getUser(userLogin);
-    dispatch(actions.setUserInfo(data));
-    dispatch(actions.setIsUserFetching(false));
+    try {
+        dispatch(actions.setIsUserFetching(true));
+        const data = await userAPI.getUser(userLogin);
+        dispatch(actions.setUserInfo(data));
+        dispatch(actions.setIsUserFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getUserRepos = (userLogin: string) => async (dispatch: any) => {
-    dispatch(actions.setIsUserReposFetching(true));
-    const reposData = await userAPI.getUserRepos(userLogin)
-        .then(values => values.map(async (repository, i) => {
-            if (i < 3) {
-                const languagesInfo = await repoAPI.getLanguagesInfo(repository.owner.login, repository.name);
-                return {
-                    id: values[i].id,
-                    name: values[i].name,
-                    languagesInfo
+    try {
+        dispatch(actions.setIsUserReposFetching(true));
+        const reposData = await userAPI.getUserRepos(userLogin)
+            .then(values => values.map(async (repository, i) => {
+                if (i < 3) {
+                    const languagesInfo = await repoAPI.getLanguagesInfo(repository.owner.login, repository.name);
+                    return {
+                        id: values[i].id,
+                        name: values[i].name,
+                        languagesInfo
+                    }
                 }
-            }
-        }));
-    await Promise.all(reposData).then((values) => {
-        const reposInfoList = values.filter((r): r is UserRepoInfoType => r !== undefined);
-        dispatch(actions.setUserRepos(reposInfoList));
-    });
-    dispatch(actions.setIsUserReposFetching(false));
+            }));
+        await Promise.all(reposData).then((values) => {
+            const reposInfoList = values.filter((r): r is UserRepoInfoType => r !== undefined);
+            dispatch(actions.setUserRepos(reposInfoList));
+        });
+        dispatch(actions.setIsUserReposFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getRepository = (login: string, repoName: string) => async (dispatch: any) => {
-    dispatch(actions.setIsRepoFetching(true));
-    const data = await repoAPI.getRepository(login, repoName);
-    dispatch(actions.setRepoInfo(data));
-    dispatch(actions.setIsRepoFetching(false));
+    try {
+        dispatch(actions.setIsRepoFetching(true));
+        const data = await repoAPI.getRepository(login, repoName);
+        dispatch(actions.setRepoInfo(data));
+        dispatch(actions.setIsRepoFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getLanguagesInfo = (login: string, repoName: string) => async (dispatch: any) => {
-    dispatch(actions.setIsLanguagesFetching(true));
-    const data = await repoAPI.getLanguagesInfo(login, repoName);
-    dispatch(actions.setLanguagesInfo(data));
-    dispatch(actions.setIsLanguagesFetching(false));
+    try {
+        dispatch(actions.setIsLanguagesFetching(true));
+        const data = await repoAPI.getLanguagesInfo(login, repoName);
+        dispatch(actions.setLanguagesInfo(data));
+        dispatch(actions.setIsLanguagesFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export const getContributors = (login: string, repoName: string) => async (dispatch: any) => {
-    dispatch(actions.setIsContributorsFetching(true));
-    const data = await repoAPI.getContributors(login, repoName);
-    dispatch(actions.setContributors(data));
-    dispatch(actions.setIsContributorsFetching(false));
+    try {
+        dispatch(actions.setIsContributorsFetching(true));
+        const data = await repoAPI.getContributors(login, repoName);
+        dispatch(actions.setContributors(data));
+        dispatch(actions.setIsContributorsFetching(false));
+    } catch (error: any) {
+        if (error.response) {
+            dispatch(actions.setError(error.response.data.message))
+        } else if (error.request) {
+
+            dispatch(actions.setError(error.request));
+        } else {
+            dispatch(actions.setError(error.message));
+        }
+    }
 };
 
 export default appReducer;

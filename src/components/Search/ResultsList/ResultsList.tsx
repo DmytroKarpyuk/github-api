@@ -5,12 +5,14 @@ import {useSelector} from 'react-redux';
 import {AppStateType} from '../../../store/store';
 import styles from './ResultsList.module.css';
 import Preloader from '../../Preloader/Preloader';
+import Error from '../../Error/Error';
 
 const ResultsList: React.FC<PropsType> = ({isShowResults, setIsShowResults}) => {
 
     const usersState = useSelector((state: AppStateType) => state.app);
     const isInfoMode = useSelector((state: AppStateType) => state.app.isInfoMode);
     const isResultsFetching = useSelector((state: AppStateType) => state.app.isResultsFetching);
+    const error = useSelector((state: AppStateType) => state.app.error);
     const ref: any = useRef(null);
 
     const handleClickOutside = (event: { target: any }) => {
@@ -25,6 +27,8 @@ const ResultsList: React.FC<PropsType> = ({isShowResults, setIsShowResults}) => 
             document.removeEventListener('click', handleClickOutside, true);
         };
     }, []);
+
+    if (error) return <Error error={error}/>
 
     return (
         <>
