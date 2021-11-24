@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/github-api/static/css/main.cde910e1.chunk.css",
-    "main.js": "/github-api/static/js/main.71dd71cb.chunk.js",
-    "main.js.map": "/github-api/static/js/main.71dd71cb.chunk.js.map",
+    "main.css": "/github-api/static/css/main.04805364.chunk.css",
+    "main.js": "/github-api/static/js/main.887ebe0d.chunk.js",
+    "main.js.map": "/github-api/static/js/main.887ebe0d.chunk.js.map",
     "runtime-main.js": "/github-api/static/js/runtime-main.d0027dc0.js",
     "runtime-main.js.map": "/github-api/static/js/runtime-main.d0027dc0.js.map",
-    "static/js/2.3294d5be.chunk.js": "/github-api/static/js/2.3294d5be.chunk.js",
-    "static/js/2.3294d5be.chunk.js.map": "/github-api/static/js/2.3294d5be.chunk.js.map",
+    "static/js/2.b096e9cc.chunk.js": "/github-api/static/js/2.b096e9cc.chunk.js",
+    "static/js/2.b096e9cc.chunk.js.map": "/github-api/static/js/2.b096e9cc.chunk.js.map",
     "index.html": "/github-api/index.html",
-    "static/css/main.cde910e1.chunk.css.map": "/github-api/static/css/main.cde910e1.chunk.css.map",
-    "static/js/2.3294d5be.chunk.js.LICENSE.txt": "/github-api/static/js/2.3294d5be.chunk.js.LICENSE.txt",
+    "static/css/main.04805364.chunk.css.map": "/github-api/static/css/main.04805364.chunk.css.map",
+    "static/js/2.b096e9cc.chunk.js.LICENSE.txt": "/github-api/static/js/2.b096e9cc.chunk.js.LICENSE.txt",
     "static/media/Account_small.18137912.svg": "/github-api/static/media/Account_small.18137912.svg",
     "static/media/Search.module.css": "/github-api/static/media/Loupe.32ac95cd.svg",
     "static/media/Building.ded66013.svg": "/github-api/static/media/Building.ded66013.svg",
@@ -19,6 +19,7 @@
     "static/media/Id.b66e967a.svg": "/github-api/static/media/Id.b66e967a.svg",
     "static/media/Location.373838ef.svg": "/github-api/static/media/Location.373838ef.svg",
     "static/media/Repo_Avatar.45f73240.svg": "/github-api/static/media/Repo_Avatar.45f73240.svg",
+    "static/media/StatItem.module.css": "/github-api/static/media/StatItemBack.e8ca5272.svg",
     "static/media/Storage_small.bac74613.svg": "/github-api/static/media/Storage_small.bac74613.svg",
     "static/media/Vector_white.1435d4ab.svg": "/github-api/static/media/Vector_white.1435d4ab.svg",
     "static/media/background_avatar.54c1a830.svg": "/github-api/static/media/background_avatar.54c1a830.svg",
@@ -31,8 +32,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.d0027dc0.js",
-    "static/js/2.3294d5be.chunk.js",
-    "static/css/main.cde910e1.chunk.css",
-    "static/js/main.71dd71cb.chunk.js"
+    "static/js/2.b096e9cc.chunk.js",
+    "static/css/main.04805364.chunk.css",
+    "static/js/main.887ebe0d.chunk.js"
   ]
 }
