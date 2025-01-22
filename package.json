@@ -1,6 +1,6 @@
 {
-  "name": "github-api",
-  "homepage": "https://DmytroKarpyuk.github.io/github-api",
+  "name": "github-search",
+  "homepage": "https://DmytroKarpyuk.github.io/github-search",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
