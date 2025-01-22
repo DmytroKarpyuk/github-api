@@ -16,8 +16,8 @@ const Search = () => {
 
     useEffect(() => {
         if (searchValue) {
-            dispatch(getUserItems(searchValue));
-            dispatch(getRepoItems(searchValue));
+            dispatch(getUserItems(searchValue) as any);
+            dispatch(getRepoItems(searchValue) as any);
             setTempSearchValue('');
             setSearchValue('');
         }

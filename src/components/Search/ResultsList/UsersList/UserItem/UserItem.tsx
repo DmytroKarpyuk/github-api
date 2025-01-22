@@ -9,7 +9,7 @@ const UserItem: React.FC<PropsType> = ({userItem}) => {
     const dispatch = useDispatch();
 
     const clickHandler = () => {
-        dispatch(getUser(userItem.login));
+        dispatch(getUser(userItem.login) as any);
         dispatch(actions.setRepoInfo(null));
         dispatch(actions.setUserItems(null));
         dispatch(actions.setRepoItems(null));

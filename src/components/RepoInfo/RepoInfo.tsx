@@ -21,8 +21,8 @@ const RepoInfo: React.FC = () => {
 
     useEffect(() => {
         if (repoInfo) {
-            dispatch(getLanguagesInfo(repoInfo.owner.login, repoInfo.name));
-            dispatch(getContributors(repoInfo.owner.login, repoInfo.name));
+            dispatch(getLanguagesInfo(repoInfo.owner.login, repoInfo.name) as any);
+            dispatch(getContributors(repoInfo.owner.login, repoInfo.name) as any);
             document.title = repoInfo.name;
         }
     }, [repoInfo, dispatch]);

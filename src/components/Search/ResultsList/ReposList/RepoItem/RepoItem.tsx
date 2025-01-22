@@ -10,7 +10,7 @@ const RepoItem: React.FC<PropsType> = ({repoItem}) => {
     const dispatch = useDispatch();
 
     const clickHandler = () => {
-        dispatch(getRepository(repoItem.owner.login, repoItem.name));
+        dispatch(getRepository(repoItem.owner.login, repoItem.name) as any);
         dispatch(actions.setUserInfo(null));
         dispatch(actions.setRepoItems(null));
         dispatch(actions.setUserItems(null));

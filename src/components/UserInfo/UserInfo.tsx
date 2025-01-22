@@ -21,7 +21,7 @@ const UserInfo: React.FC = () => {
     const dispatch = useDispatch();
 
     const clickHandler = (login: string, repoName: string) => {
-        dispatch(getRepository(login, repoName));
+        dispatch(getRepository(login, repoName) as any);
         dispatch(actions.setUserInfo(null));
         dispatch(actions.setRepoItems(null));
         dispatch(actions.setUserItems(null));
@@ -30,7 +30,7 @@ const UserInfo: React.FC = () => {
 
     useEffect(() => {
         if (userInfo) {
-            dispatch(getUserRepos(userInfo.login));
+            dispatch(getUserRepos(userInfo.login) as any);
             document.title = userInfo.login;
         }
     }, [userInfo, dispatch]);
