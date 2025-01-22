@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/github-search/static/css/main.1cb87aef.css",
+    "main.js": "/github-search/static/js/main.203b949e.js",
+    "static/media/StatItemBack.svg": "/github-search/static/media/StatItemBack.b9669a8bd45ecce2c623.svg",
+    "static/media/background_cat.svg": "/github-search/static/media/background_cat.92c486bd71e67bfb35a47a941dba5b0b.svg",
+    "static/media/Building.svg": "/github-search/static/media/Building.17584324e4fe2de0016494b42867dde0.svg",
+    "static/media/background_cat2.svg": "/github-search/static/media/background_cat2.0ae5e1717e2fa95f9c923fdaaa46e449.svg",
+    "static/media/Id.svg": "/github-search/static/media/Id.53729eaf1975aa0cea68ca80246d9b8f.svg",
+    "static/media/Followers.svg": "/github-search/static/media/Followers.d40c118729f22374aaf8174ebf7ff76f.svg",
+    "static/media/Storage_small.svg": "/github-search/static/media/Storage_small.f11be6f2796953a16b53583de0658e55.svg",
+    "static/media/Account_small.svg": "/github-search/static/media/Account_small.8103967c319d8dafa1f7bc21a41a4860.svg",
+    "static/media/Repo_Avatar.svg": "/github-search/static/media/Repo_Avatar.8e78b9b42eeadcb75027f42298f25b92.svg",
+    "static/media/Following.svg": "/github-search/static/media/Following.8e76760c595793fd8d04b020a4fd5f9e.svg",
+    "static/media/Vector_white.svg": "/github-search/static/media/Vector_white.e4ddfd4ede7baca53e31d250624bcac7.svg",
+    "static/media/folder.svg": "/github-search/static/media/folder.277afafd340291719c96b9446f95c165.svg",
+    "static/media/Location.svg": "/github-search/static/media/Location.67ed8dda2dd9ce93245a07ba8a3dce04.svg",
+    "static/media/Folder_green_small.svg": "/github-search/static/media/Folder_green_small.f62d67239356b0e2f9d48ab2ff338a8f.svg",
+    "static/media/background_eye.svg": "/github-search/static/media/background_eye.f234f011339d34e8628aa460989d2feb.svg",
+    "static/media/Cross.svg": "/github-search/static/media/Cross.9137977ff04677442eea.svg",
+    "index.html": "/github-search/index.html",
+    "static/media/Arrow.svg": "/github-search/static/media/Arrow.08fc2f8575c6cc3cff86.svg",
+    "static/media/background_avatar.svg": "/github-search/static/media/background_avatar.84e4a906c0542beea3921068f06614cb.svg",
+    "static/media/Loupe.svg": "/github-search/static/media/Loupe.81bc0fc385f14ba78766.svg",
+    "static/media/background_loupe.svg": "/github-search/static/media/background_loupe.e6bebf19f8269f3b70e063ce42b16dac.svg",
+    "static/media/background_loupe2.svg": "/github-search/static/media/background_loupe2.d807e78a47ff17aa6db5463e3abb0aa2.svg",
+    "main.1cb87aef.css.map": "/github-search/static/css/main.1cb87aef.css.map",
+    "main.203b949e.js.map": "/github-search/static/js/main.203b949e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cb87aef.css",
+    "static/js/main.203b949e.js"
+  ]
+}
